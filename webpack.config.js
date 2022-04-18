@@ -1,22 +1,22 @@
+import HtmlWebpackPlugin from 'html-webpack-plugin';
+import path from 'path';
+import webpack from 'webpack';
+// import sass from 'sass'
 
-import HtmlWebpackPlugin from 'html-webpack-plugin'
-import path from 'path'
-import webpack from 'webpack'
-
-const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin
+const ModuleFederationPlugin = webpack.container.ModuleFederationPlugin;
 
 // For testing take pull from Appblox/node-blox-sdk and npm install from path
-import { env } from 'node-blox-sdk'
-env.init()
+import { env } from 'node-blox-sdk';
+env.init();
 
-const __dirname = path.resolve()
+const __dirname = path.resolve();
 
 export default {
   entry: './src/index',
   mode: 'development',
   devServer: {
     static: path.join(__dirname, 'dist'),
-    port: 4008,
+    port: 3003,
   },
   externals: {
     env: JSON.stringify(process.env),
@@ -27,25 +27,25 @@ export default {
   module: {
     rules: [
       {
-        test: /.js$/,
+        test: /\.js$/,
         loader: 'babel-loader',
         options: {
           presets: ['@babel/preset-react'],
         },
       },
       {
-        test: /.css$/i,
-        use: ['style-loader', 'css-loader'],
-      },
-      {
-        test: /.m?js/,
-        type: 'javascript/auto',
-      },
-      {
-        test: /.m?js/,
-        resolve: {
-          fullySpecified: false,
+        test: /\.(jpg|png|svg)$/,
+        use: {
+          loader: 'url-loader',
         },
+      },
+      {
+        test: /\.s[ac]ss$/i,
+        use: ['style-loader', 'css-loader', 'sass-loader'],
+      },
+      {
+        test: /\.css$/i,
+        use: ['style-loader', 'css-loader'],
       },
     ],
   },
@@ -54,10 +54,10 @@ export default {
       'process.env': JSON.stringify(process.env),
     }),
     new ModuleFederationPlugin({
-      name: edit_modal,
+      name: 'editmodal',
       filename: 'remoteEntry.js',
       exposes: {
-        './edit_modal': './src/edit_modal',
+        './editmodal': './src/edit_modal.js',
       },
       shared: {
         react: {
@@ -73,4 +73,4 @@ export default {
       template: './public/index.html',
     }),
   ],
-}
+};
