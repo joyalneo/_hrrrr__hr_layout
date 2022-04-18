@@ -26,6 +26,7 @@
     "axios": "^0.26.1",
     "css-loader": "^5.0.1",
     "node-blox-sdk": "git+https://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:x-oauth-basic@github.com/Appblox/node-blox-sdk.git",
+    "blox-js-sdk": "git+https://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:x-oauth-basic@github.com/Appblox/blox-js-sdk.git",
     "node-sass": "^4.13.1",
     "postcss": "^8.2.2",
     "react": "^17.0.2",

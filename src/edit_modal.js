@@ -1,18 +1,31 @@
 import React, { useEffect, useState } from 'react';
 import Avatar from './assets/img/avatar.svg';
 import Axios from 'axios';
+import { shield } from 'blox-js-sdk';
 
 const EditModal = (props) => {
   const { candidateNewModal, current, handleCandidateNewModal } = props;
+
+  const token = shield.tokenStore.getToken();
 
   const [data, setData] = useState(null);
 
   useEffect(() => {
     if (current) setData(current);
-
-    return () => setData(null);
+    else
+      setData({
+        firstName: '',
+        lastName: '',
+        emailID: '',
+        phone: '',
+        linkedinProfile: '',
+        experience: '1 Years',
+        highestEducationalQualification: 'Masters',
+        preferredJobRole: 'Business Analyst',
+        preferredJobLocation: 'India',
+      });
   }, [current]);
-
+  
   const onChange = (e) => {
     const { name, value } = e.target;
     let prevData = { ...data };
@@ -25,22 +38,22 @@ const EditModal = (props) => {
       if (current) {
         await Axios.post(
           `https://hiringapp-dev-functions.appblox.io/updateCandidate`,
-          data
-          // {
-          //   headers: {
-          //     Authorization: `Bearer ${token}`,
-          //   },
-          // }
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
       } else {
         await Axios.post(
           `https://hiringapp-dev-functions.appblox.io/addCandidate`,
-          data
-          // {
-          //   headers: {
-          //     Authorization: `Bearer ${token}`,
-          //   },
-          // }
+          data,
+          {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          }
         );
       }
       handleCandidateNewModal();
