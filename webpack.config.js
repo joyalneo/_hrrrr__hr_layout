@@ -88,6 +88,13 @@ export default {
           singleton: true, // only a single version of the shared module is allowed
           version: '^5.2.0',
         },
+        axios: {
+          import: 'axios', // the "react" package will be used a provided and fallback module
+          shareKey: 'axios', // under this name the shared module will be placed in the share scope
+          shareScope: 'default', // share scope with this name will be used
+          singleton: true, // only a single version of the shared module is allowed
+          version: '^0.26.1',
+        },
         'blox-js-sdk': {
           import: 'blox-js-sdk',
           shareKey: 'blox-js-sdk',
