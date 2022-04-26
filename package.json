@@ -1,0 +1,40 @@
+{
+  "name": "candidate_listing",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "webpack-dev-server",
+    "build": "webpack --mode production"
+  },
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "7.15.0",
+    "@babel/preset-react": "7.14.5",
+    "babel-loader": "8.2.2",
+    "dotenv": "^16.0.0",
+    "html-webpack-plugin": "5.3.2",
+    "tailwindcss": "^3.0.3",
+    "webpack": "5.51.2",
+    "webpack-cli": "4.9.0",
+    "webpack-dev-server": "4.1.0"
+  },
+  "dependencies": {
+    "axios": "^0.26.1",
+    "css-loader": "^5.0.1",
+    "node-blox-sdk": "git+https://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:x-oauth-basic@github.com/Appblox/node-blox-sdk.git",
+    "blox-js-sdk": "git+https://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:x-oauth-basic@github.com/Appblox/blox-js-sdk.git",
+    "node-sass": "^4.13.1",
+    "postcss": "^8.2.2",
+    "react": "^17.0.2",
+    "react-cool-onclickoutside": "^1.7.0",
+    "react-dom": "^17.0.2",
+    "sass": "^1.32.2",
+    "sass-loader": "^10.1.0",
+    "style-loader": "^2.0.0",
+    "url-loader": "^4.1.1"
+  }
+}

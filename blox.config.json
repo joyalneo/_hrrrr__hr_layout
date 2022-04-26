@@ -1,0 +1,1 @@
+{"name":"edit_modal","type":"ui-elements","source":{"https":"","ssh":"git@github.com:joyalneo/_ha_edit_modal.git"},"language":"nodejs","start":"npm run start","build":"npm run build","postPull":"npm i"}
